@@ -38,7 +38,6 @@ Sample Output
 35
 12
 */
-
 package main
 
 import "fmt"
@@ -52,22 +51,13 @@ func main() {
 		fmt.Scan(&b, &w, &x, &y, &z)
 		var result int
 
-		if x > y {
-			su := y + z
-			if x > su {
-				result = y*(b+w) + z*b
-			} else {
-				result = x*b + y*w
-			}
-		} else {
-			su := x + z
-			if y > su {
-				result = x*(b+w) + z*w
-			} else {
-				result = x*b + y*w
-			}
+		if x > y+z {
+			x = y + z
+		} else if y > x+z {
+			y = x + z
 		}
 
+		result = x*b + y*w
 		fmt.Println(result)
 	}
 }
